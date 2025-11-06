@@ -1,0 +1,61 @@
+<div class="container">
+  <h1 class="title">Request A Book</h1>
+  <p class="subtitle">
+    Please fill up the form below to Request a Book. We will inform you as soon as the book is available.
+  </p>
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <!-- ROW 1 -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>ISBN13: <span class="required">*</span></label>
+        <input type="text" formControlName="isbn" placeholder="Enter ISBN13" />
+        <small *ngIf="bookForm.get('isbn')?.touched && bookForm.get('isbn')?.invalid">
+          ISBN is required.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label>Book Title: <span class="required">*</span></label>
+        <input type="text" formControlName="title" placeholder="Enter Book Title" />
+        <small *ngIf="bookForm.get('title')?.touched && bookForm.get('title')?.invalid">
+          Book title is required.
+        </small>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Author:</label>
+        <input type="text" formControlName="author" placeholder="Enter Author Name" />
+      </div>
+
+      <div class="form-group">
+        <label>Quantity:</label>
+        <input type="number" formControlName="quantity" min="1" />
+        <small *ngIf="bookForm.get('quantity')?.errors?.['min']">Minimum 1 required.</small>
+      </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Email Id: <span class="required">*</span></label>
+        <input type="email" formControlName="email" placeholder="Enter Email" />
+        <small *ngIf="bookForm.get('email')?.touched && bookForm.get('email')?.invalid">
+          Enter a valid email.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label>Phone/Mobile:</label>
+        <input type="tel" formControlName="phone" placeholder="Enter Phone Number" />
+      </div>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit" [disabled]="bookForm.invalid">Submit Request</button>
+    </div>
+  </form>
+</div>

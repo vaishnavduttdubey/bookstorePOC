@@ -1,0 +1,86 @@
+<!--  RED BANNER -->
+<div class="upper-bar">
+  <div class="banner-content">
+    <!-- Left Books -->
+    <div class="banner-images left">
+      <img src="assets/Sports/Sachine Tendulkar.jpg" alt="Sachin Tendulkar" />
+      <img src="assets/Award winner/The gruffalo.jpg" alt="The Gruffalo" />
+      <img src="assets/Marvel/DareDevil.jpg" alt="DareDevil" />
+    </div>
+
+    <!-- Center Text -->
+    <p class="banner-text">A book is a gift you can open again and again.</p>
+
+    <!-- Right Books -->
+    <div class="banner-images right">
+      <img
+        src="assets/New Arrival/The Art of Spending money.jpg"
+        alt="Art of Spending Money"
+      />
+      <img src="assets/Marvel/Loki.jpg" alt="Loki" />
+      <img src="assets/Comedy/Comedy in Khakhi.jpg" alt="Comedy in Khakhi" />
+    </div>
+  </div>
+</div>
+
+<section class="books-section">
+  <h2 class="section-title">Now Trending</h2>
+  <div class="slider-wrapper">
+    <button class="slide-btn left" (click)="slideLeft()">&#10216;</button>
+
+    <div class="book-slider" #slider>
+      <div class="book-card" *ngFor="let book of topBooks">
+        <img [src]="book.image" [alt]="book.title" class="book-img" />
+        <h3 class="book-title">{{ book.title }}</h3>
+        <p class="book-author">by {{ book.author }}</p>
+        <p class="book-price">₹{{ book.price }}</p>
+        <p class="book-rating">{{ book.rating }}</p>
+      </div>
+    </div>
+
+    <button class="slide-btn right" (click)="slideRight()">&#10217;</button>
+  </div>
+</section>
+
+<!--  MANGA POSTER -->
+<section class="mangaworldPoster">
+  <img
+    src="assets/MangaworldPoster.jpg"
+    alt="MangaWorld Poster"
+    class="mangaworld-image"
+  />
+</section>
+
+<section class="books-row">
+  <h2 class="section-title">Find Your Choice</h2>
+  <div class="book-container">
+    <div class="book-card" *ngFor="let book of bookrow">
+      <img [src]="book.image" [alt]="book.title" class="book-img" />
+      <h3 class="book-title">{{ book.title }}</h3>
+      <p class="book-author">by {{ book.author }}</p>
+      <p class="book-price">₹{{ book.price }}</p>
+      <p class="book-rating">{{ book.rating }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="mangaworldPoster">
+  <img
+    src="assets/AfterArrivalposter.jpg"
+    alt="after arrival poster"
+    class="mangaworld-image"
+  />
+</section>
+
+<section class="NewArrival">
+  <h2 class="section-title">New Arrivals</h2>
+  <div class="book-container">
+    <div class="book-card" *ngFor="let book of bookNewArrival">
+      <img [src]="book.image" [alt]="book.title" class="book-img" />
+      <h3 class="book-title">{{ book.title }}</h3>
+      <p class="book-author">by {{ book.author }}</p>
+      <p class="book-price">₹{{ book.price }}</p>
+      <p class="book-rating">{{ book.rating }}</p>
+    </div>
+  </div>
+</section>

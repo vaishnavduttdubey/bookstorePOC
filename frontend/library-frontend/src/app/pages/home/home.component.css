@@ -1,0 +1,237 @@
+/* ------- RED BANNER ------- */
+.upper-bar {
+  background-color: #b12d15;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.banner-images {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.banner-images img {
+  width: 60px;
+  height: 80px;
+  object-fit: fill;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.banner-text {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  font-family: "Poppins", serif;
+  background: linear-gradient(90deg, #fff700, #ffd500, #ffea00, #fff700);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite, pop 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pop {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* ------- BOOK SLIDER ------- */
+.books-section {
+  padding: 40px 0;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1b6f5a;
+  margin-bottom: 20px;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.book-slider {
+  display: flex;
+  gap: 18px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.book-slider::-webkit-scrollbar {
+  display: none;
+}
+.book-slider {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.book-card {
+  background: #f7f7f7;
+  flex: 0 0 calc(25% - 18px); /* 4 books perr row */
+  padding: -2px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.book-img {
+  width: 180px;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 5px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.book-img:hover {
+  transform: scale(1.05); /* slightly zoom in */
+  box-shadow: 0 4px 15px rgba(223, 68, 68, 0.3); /* soft shadow */
+}
+
+
+.book-title {
+  font-size: 1rem;
+  color: #333;
+  margin: 3px 0 3px;
+}
+
+.book-author {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.book-rating {
+  color: #f79c0a;
+  font-size: 1.2rem;
+}
+
+.book-price {
+  color: #1b6f5a;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+
+/* ------- SLIDER BUTTONS ------- */
+.slide-btn {
+  background: transparent;
+  border: none;
+  color: #1b6f5a;
+  font-size: 3rem;
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: color 0.3s ease;
+}
+
+.slide-btn:hover {
+  color: #155e4a;
+}
+
+.slide-btn.left {
+  left: 5px; /* moved slightly outside */
+}
+
+.slide-btn.right {
+  right: 5px; /* moved slightly outside */
+}
+
+/* ------- MANGA POSTER ------- */
+.mangaworldPoster {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+  background-color: #faf1f1;
+}
+
+.mangaworld-image {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* ------- RESPONSIVE ------- */
+@media (max-width: 768px) {
+  .book-card {
+    flex: 0 0 calc(50% - 18px);
+  }
+  .banner-text {
+    font-size: 1.5rem;
+  }
+  .banner-images img {
+    width: 45px;
+    height: 60px;
+  }
+  .mangaworldPoster {
+    padding: 10px;
+  }
+  .mangaworld-image {
+    max-height: 60vh;
+  }
+}
+
+
+.book-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* space between cards */
+}
+
+.book-card {
+  text-align: center;
+}
+
+.book-img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+}
+

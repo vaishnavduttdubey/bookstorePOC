@@ -1,4 +1,4 @@
-# LibraryFrontend
+# VsnvBookStore
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
@@ -57,3 +57,10 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## // "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              // "node_modules/primeng/resources/primeng.min.css",
+              // "node_modules/primeicons/primeicons.css",
+              during the dropdown we i have two module boot strat and primeng thats why they are not working 
+              
