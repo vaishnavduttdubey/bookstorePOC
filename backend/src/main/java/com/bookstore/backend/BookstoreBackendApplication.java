@@ -8,7 +8,7 @@ public class BookstoreBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreBackendApplication.class, args);
-		System.out.println("ishnav");
+		System.out.println("vaishnav");
 	}
 
 }

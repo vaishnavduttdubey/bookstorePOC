@@ -1,0 +1,87 @@
+<section class="page">
+  <div class="content">
+    <!-- LEFT SIDE -->
+    <div class="left-section">
+      <h2 class="title">VSNVBook'Store</h2>
+      <p class="small-title">
+        Library helps you connect and share with the people in your life.
+      </p>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="container">
+      <div class="inner-box">
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()"
+          class="login-form"
+          novalidate
+        >
+          <!-- EMAIL -->
+          <input
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+            [class.invalid]="
+              loginForm.get('email')?.invalid &&
+              (loginForm.get('email')?.touched || submitted)
+            "
+          />
+          <div
+            class="error"
+            *ngIf="loginForm.get('email')?.touched || submitted"
+          >
+            <small *ngIf="loginForm.get('email')?.errors?.['required']">
+              Email is required
+            </small>
+            <small *ngIf="loginForm.get('email')?.errors?.['email']">
+              Enter a valid email
+            </small>
+          </div>
+
+          <!-- PASSWORD -->
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            [class.invalid]="
+              loginForm.get('password')?.invalid &&
+              (loginForm.get('password')?.touched || submitted)
+            "
+          />
+          <div
+            class="error"
+            *ngIf="loginForm.get('password')?.touched || submitted"
+          >
+            <small *ngIf="loginForm.get('password')?.errors?.['required']">
+              Password is required
+            </small>
+            <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+              Password must be at least 6 characters
+            </small>
+            <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
+              Must include 1 uppercase, 1 number & 1 symbol
+            </small>
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button
+            class="login-submit"
+            type="submit"
+            [disabled]="loginForm.invalid"
+          >
+            Log In
+          </button>
+        </form>
+
+        <p class="forgot">Forgotten password?</p>
+        <hr />
+        <a routerLink="/signup"
+          ><button class="signupRoute" routerLink="signup">
+            Create New Account
+          </button></a
+        >
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,128 @@
+<div class="page">
+  <div class="content">
+    <!-- Left Side -->
+    <div class="left-section">
+      <p class="small-title">Join us and start your journey today!</p>
+    </div>
+
+    <!-- Right Side -->
+    <div class="container">
+      <div class="inner-box">
+        <form
+          [formGroup]="signupForm"
+          (ngSubmit)="onSubmit()"
+          class="signup-form"
+          novalidate
+        >
+          <!-- Name -->
+          <input type="text" placeholder="Full Name" formControlName="name" />
+          <div
+            class="error-message"
+            *ngIf="
+              signupForm.get('name')?.invalid && signupForm.get('name')?.touched
+            "
+          >
+            Name is required.
+          </div>
+
+          <!-- Mobile -->
+          <input
+            type="text"
+            placeholder="Mobile Number"
+            formControlName="mobile"
+          />
+          <div
+            class="error-message"
+            *ngIf="
+              signupForm.get('mobile')?.invalid &&
+              signupForm.get('mobile')?.touched
+            "
+          >
+            Enter a valid 10-digit mobile number.
+          </div>
+
+          <!-- Email -->
+          <input
+            type="email"
+            placeholder="Email Address"
+            formControlName="email"
+          />
+          <div
+            class="error-message"
+            *ngIf="
+              signupForm.get('email')?.invalid &&
+              signupForm.get('email')?.touched
+            "
+          >
+            Enter a valid email address.
+          </div>
+
+          <!-- Password -->
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <div
+            class="error-message"
+            *ngIf="
+              signupForm.get('password')?.invalid &&
+              signupForm.get('password')?.touched
+            "
+          >
+            Password must be at least 6 characters.
+          </div>
+
+          <!-- Confirm Password -->
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+          <div
+            class="error-message"
+            *ngIf="
+              signupForm.get('confirmPassword')?.touched &&
+              signupForm.hasError('passwordMismatch')
+            "
+          >
+            Passwords do not match.
+          </div>
+
+          <!-- Address -->
+          <textarea
+            rows="3"
+            placeholder="Address"
+            formControlName="address"
+          ></textarea>
+          <div
+            class="error-message"
+            *ngIf="
+              signupForm.get('address')?.invalid &&
+              signupForm.get('address')?.touched
+            "
+          >
+            Address is required.
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="login-submit"
+            [disabled]="signupForm.invalid"
+          >
+            Sign Up
+          </button>
+
+          <hr />
+
+          <!-- Redirect to Login -->
+          <p class="switch-text">
+            Already have an account?
+            <a routerLink="/login" class="route-link">Log In</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

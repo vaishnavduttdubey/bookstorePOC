@@ -1,0 +1,155 @@
+/* ===== Page Layout ===== */
+.page {
+  background-color: #e7e7e2;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* ===== Content Wrapper ===== */
+.content {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+}
+
+/* ===== Left Section (Title & Tagline) ===== */
+.left-section {
+  flex: 1;
+  padding-right: 60px;
+}
+
+.title {
+  color: #167faf;
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.small-title {
+  font-size: 22px;
+  color: #000000;
+  line-height: 28px;
+}
+
+/* ===== Right Section (Login Box) ===== */
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inner-box {
+  background-color: #fff;
+  padding: 28px 25px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  width: 370px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inner-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== Form ===== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-form input {
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #dddfe2;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form input:focus {
+  border-color: #631111;
+  box-shadow: 0 0 4px rgba(24, 119, 242, 0.4);
+}
+
+/* ===== Error Styling ===== */
+.login-form input.ng-invalid.ng-touched {
+  border-color: #e53935;
+  background-color: #fff5f5;
+}
+
+.error-message {
+  font-size: 13px;
+  text-align: left;
+  margin-top: -8px;
+  margin-bottom: 4px;
+  color: #e53935;
+}
+
+/* ===== Buttons ===== */
+.login-submit {
+  background-color: #167faf;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-submit:hover {
+  background-color: #b91212;
+}
+
+.login-submit:disabled {
+  background-color: #b3c9f7;
+  cursor: not-allowed;
+}
+
+/* ===== Forgot Password ===== */
+.forgot {
+  color: #0c1a2c;
+  margin: 10px 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: text-decoration 0.2s ease;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* ===== Divider ===== */
+hr {
+  border: none;
+  height: 1px;
+  background: #dddfe2;
+  margin: 20px 0;
+}
+
+/* ===== Signup Button ===== */
+.signupRoute {
+  background-color: #5c9151;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 80px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.signupRoute:hover {
+  background-color: #36a420;
+}

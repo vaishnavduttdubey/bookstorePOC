@@ -1,0 +1,17 @@
+<section class="category-page">
+  <h2 class="section-title">{{ category }} Books</h2>
+
+  <div class="book-container">
+    <div
+      class="book-card"
+      *ngFor="let book of books"
+      [routerLink]="['/book', book.id]"
+    >
+      <img [src]="book.image" [alt]="book.title" class="book-img" />
+      <h3 class="book-title">{{ book.title }}</h3>
+      <p class="book-author">by {{ book.author }}</p>
+      <p class="book-price">₹{{ book.price }}</p>
+      <p class="book-rating">{{ book.rating }}</p>
+    </div>
+  </div>
+</section>

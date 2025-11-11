@@ -1,0 +1,158 @@
+/* ===== Page Layout ===== */
+.page {
+  background-color: #e7e7e2;
+  min-height: calc(100vh - 120px); /* Adjust height between nav and footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 60px 0; /* Prevent overlap from nav/footer */
+  box-sizing: border-box;
+}
+
+/* ===== Content Wrapper ===== */
+.content {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  flex-wrap: wrap;
+}
+
+/* ===== Left Section ===== */
+.left-section {
+  flex: 1;
+  padding-right: 60px;
+}
+
+
+
+.small-title {
+  font-size: 22px;
+  color: #000000;
+  line-height: 28px;
+}
+
+/* ===== Right Section (Form Container) ===== */
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inner-box {
+  background-color: #fff;
+  padding: 28px 25px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  width: 400px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inner-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== Signup Form ===== */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.signup-form input,
+.signup-form textarea {
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #dddfe2;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: none;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  border-color: #167faf;
+  box-shadow: 0 0 4px rgba(22, 127, 175, 0.4);
+}
+
+/* ===== Error Styles ===== */
+.signup-form input.ng-invalid.ng-touched,
+.signup-form textarea.ng-invalid.ng-touched {
+  border-color: #e53935;
+  background-color: #fff5f5;
+}
+
+.error-message {
+  font-size: 13px;
+  text-align: left;
+  margin-top: -8px;
+  margin-bottom: 4px;
+  color: #e53935;
+}
+
+/* ===== Buttons ===== */
+.login-submit {
+  background-color: #167faf;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-submit:hover {
+  background-color: #36a420;
+}
+
+.login-submit:disabled {
+  background-color: #b3c9f7;
+  cursor: not-allowed;
+}
+
+/* ===== Divider & Links ===== */
+hr {
+  border: none;
+  height: 1px;
+  background: #dddfe2;
+  margin: 20px 0;
+}
+
+.switch-text {
+  font-size: 14px;
+}
+
+.route-link {
+  color: #167faf;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.route-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== Responsive Fix ===== */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .left-section {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .inner-box {
+    width: 100%;
+    max-width: 360px;
+  }
+}

@@ -23,13 +23,18 @@
   </div>
 </div>
 
+<!-- NOW TRENDING SECTION -->
 <section class="books-section">
   <h2 class="section-title">Now Trending</h2>
   <div class="slider-wrapper">
     <button class="slide-btn left" (click)="slideLeft()">&#10216;</button>
 
     <div class="book-slider" #slider>
-      <div class="book-card" *ngFor="let book of topBooks">
+      <div
+        class="book-card"
+        *ngFor="let book of trendingBooks"
+        [routerLink]="['/book', book.id]"
+      >
         <img [src]="book.image" [alt]="book.title" class="book-img" />
         <h3 class="book-title">{{ book.title }}</h3>
         <p class="book-author">by {{ book.author }}</p>
@@ -42,7 +47,7 @@
   </div>
 </section>
 
-<!--  MANGA POSTER -->
+<!--  MangaWorld Poster -->
 <section class="mangaworldPoster">
   <img
     src="assets/MangaworldPoster.jpg"
@@ -51,10 +56,15 @@
   />
 </section>
 
+<!--  FIND YOUR CHOICE SECTION -->
 <section class="books-row">
   <h2 class="section-title">Find Your Choice</h2>
   <div class="book-container">
-    <div class="book-card" *ngFor="let book of bookrow">
+    <div
+      class="book-card"
+      *ngFor="let book of choiceBooks"
+      [routerLink]="['/book', book.id]"
+    >
       <img [src]="book.image" [alt]="book.title" class="book-img" />
       <h3 class="book-title">{{ book.title }}</h3>
       <p class="book-author">by {{ book.author }}</p>
@@ -64,18 +74,24 @@
   </div>
 </section>
 
+<!--  After Arrival Poster -->
 <section class="mangaworldPoster">
   <img
     src="assets/AfterArrivalposter.jpg"
-    alt="after arrival poster"
+    alt="After Arrival Poster"
     class="mangaworld-image"
   />
 </section>
 
+<!--  NEW ARRIVALS SECTION -->
 <section class="NewArrival">
   <h2 class="section-title">New Arrivals</h2>
   <div class="book-container">
-    <div class="book-card" *ngFor="let book of bookNewArrival">
+    <div
+      class="book-card"
+      *ngFor="let book of arrivalBooks"
+      [routerLink]="['/book', book.id]"
+    >
       <img [src]="book.image" [alt]="book.title" class="book-img" />
       <h3 class="book-title">{{ book.title }}</h3>
       <p class="book-author">by {{ book.author }}</p>

@@ -1,0 +1,22 @@
+<div class="book-details-container" *ngIf="book">
+  <div class="book-image">
+    <img [src]="book.image" [alt]="book.title" />
+  </div>
+
+  <div class="book-info">
+    <h2>{{ book.title }}</h2>
+    <p><b>Author:</b> {{ book.author }}</p>
+    <p><b>Category:</b> {{ book.category }}</p>
+    <p><b>Rating:</b> {{ book.rating }}</p>
+    <p><b>Price:</b> ₹{{ book.price }}</p>
+    <p class="description"><b>Description:</b> {{ book.description }}</p>
+    <button>Add to cart</button>
+    <button>Buy Now</button>
+  </div>
+</div>
+
+<!-- If no book is found -->
+<div *ngIf="!book" class="not-found">
+  <h3>No book found!</h3>
+  <button routerLink="/home">Go Back</button>
+</div>

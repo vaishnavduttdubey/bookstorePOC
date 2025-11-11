@@ -1,39 +1,36 @@
-<!--header.component.html -->
 <header class="header">
   <!-- TOP BAR -->
   <div class="top-bar">
     <a routerLink="/home">
       <img src="assets/logo.png" alt="VSNV Logo" class="logo" />
     </a>
-    
 
     <div class="search-container">
-      <input
-        type="text"
-        class="search-bar"
-        placeholder="Search by Title, Author"
-      />
-
-      <button class="search-btn"><i class="fa fa-search"></i></button>
+      <input type="text" class="search-bar" placeholder="Search for books..." />
+      <button class="search-btn">
+        <i class="fa fa-search"></i>
+      </button>
     </div>
 
-    <!-- this is the header icon with counter  -->
+    <!-- this is the header icon with counter -->
     <div class="header-icons">
-      <a href="#"><i class="fa-regular fa-circle-user"></i> My Account</a>
+      <a routerLink="login">
+        <i class="fa-regular fa-circle-user"></i> My Account
+      </a>
 
       <a href="#" class="icon-wrapper">
         <i class="fa fa-heart" style="color: #e63946"></i>
         <span class="counter">0</span>
       </a>
 
-      <a href="#" class="icon-wrapper">
+      <a routerLink="addTocart" class="icon-wrapper">
         <i class="fa fa-shopping-cart" style="color: #e63946"></i>
         <span class="counter">0</span>
       </a>
     </div>
   </div>
 
-  <!-- here we have nav bar links  -->
+  <!-- NAVIGATION BAR -->
   <nav class="nav-menu">
     <li class="nav-item dropdown">
       <a
@@ -47,22 +44,32 @@
         Books
       </a>
       <ul class="dropdown-menu" aria-labelledby="booksDropdown">
-        <li><a class="dropdown-item" href="#">Sports</a></li>
-        <li><a class="dropdown-item" href="#">Comedy</a></li>
-        <li><a class="dropdown-item" href="#">Marvel</a></li>
-        <li><a class="dropdown-item" href="#">Biographies </a></li>
-        <li><a class="dropdown-item" href="#">Horror</a></li>
-        <li><a class="dropdown-item" href="#">Children's Books</a></li>
+        <li>
+          <a class="dropdown-item" routerLink="/category/Sports">Sports</a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/category/Comedy">Comedy</a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/category/Marvel">Marvel</a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/category/Horror">Horror</a>
+        </li>
+        <li>
+          <a class="dropdown-item" routerLink="/category/Children">
+            Children's Books
+          </a>
+        </li>
       </ul>
     </li>
 
     <a routerLink="arrival">New Arrivals</a> |
-    <a routerLink="box-set">Box Sets</a>|
-    <a routerLink="bestseller">Bestsellers</a>|
-    <a routerLink="fiction-books">Fiction Books</a>|
-    <a routerLink="awardwinner">Award Winners</a>|
-    <a routerLink="feature-author">Featured Authors</a>|
-    <a routerLink="todaysdeal">Today's Deal</a>|
+    <a routerLink="box-set">Box Sets</a> |
+    <a routerLink="bestseller">Bestsellers</a> |
+    <a routerLink="fiction-books">Fiction Books</a> |
+    <a routerLink="awardwinner">Award Winners</a> |
+    <a routerLink="todaysdeal">Today's Deal</a> |
     <a routerLink="requestbook">Request a Book</a>
   </nav>
 </header>
