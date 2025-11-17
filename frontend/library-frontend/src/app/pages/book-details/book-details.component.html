@@ -10,7 +10,8 @@
     <p><b>Rating:</b> {{ book.rating }}</p>
     <p><b>Price:</b> ₹{{ book.price }}</p>
     <p class="description"><b>Description:</b> {{ book.description }}</p>
-    <button>Add to cart</button>
+    <button (click)="addToCart(book)">Add to Cart</button>
+
     <button>Buy Now</button>
   </div>
 </div>

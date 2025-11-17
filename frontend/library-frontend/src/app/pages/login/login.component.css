@@ -24,7 +24,7 @@
 }
 
 .title {
-  color: #167faf;
+  color:#8b1d09;
   font-size: 60px;
   font-weight: 700;
   margin-bottom: 8px;
@@ -96,7 +96,7 @@
 
 /* ===== Buttons ===== */
 .login-submit {
-  background-color: #167faf;
+  background-color: #8b1d09;
   color: #fff;
   font-size: 18px;
   font-weight: bold;

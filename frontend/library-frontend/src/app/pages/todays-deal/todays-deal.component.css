@@ -48,7 +48,7 @@
 
 .section-title{
   text-align: center;
- color: rgb(96, 236, 68);
+ color: #8b1d09;
 font-family: 'Times New Roman', Times, serif;
  margin: 20px;
  font-weight: bold
@@ -102,7 +102,7 @@ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-size: 14px;
 }
 
-/* 📱 Responsive for smaller screens */
+/*  Responsive for smaller screens */
 @media (max-width: 1024px) {
   .book-container {
     grid-template-columns: repeat(3, 1fr);

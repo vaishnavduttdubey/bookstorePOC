@@ -1,38 +1,37 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-book-details',
-  standalone:true,
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })
-export class BookDetailsComponent {
+export class BookDetailsComponent implements OnInit {
 
-private booksService= inject(BooklistService);
-books:any=[];
+  private booksService = inject(BooklistService);
+  private cartService = inject(CartService);
+  private routes = inject(ActivatedRoute);
 
-book:any;
-constructor(private routes:ActivatedRoute){
-  this.books= this.booksService.books;
-}
+  books: any[] = [];
+  book: any;
 
-ngOnInit(): void {
-  //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-  //Add 'implements OnInit' to the class.
-    const idFromUrl = this.routes.snapshot.paramMap.get('id');
-     let bookId = Number(idFromUrl);
-
-      this.book = null;// will start with like no book selected so
-
-      for (let i = 0; i < this.books.length; i++) {
-           if (this.books[i].id === bookId) {
-             this.book = this.books[i];
-    }
+  constructor() {
+    this.books = this.booksService.books;
   }
-}
 
+  ngOnInit(): void {
+    const idFromUrl = this.routes.snapshot.paramMap.get('id');
+    const bookId = Number(idFromUrl);
+
+    this.book = this.books.find(b => b.id === bookId);
+  }
+
+  addToCart(book: any) {
+    this.cartService.addToCart(book);
+  }
 }

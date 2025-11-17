@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
@@ -10,44 +10,44 @@ import { BooklistService } from '../../booklist.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   @ViewChild('slider', { static: false }) slider!: ElementRef;
 
-  trendingBooks: any = [];
-  choiceBooks: any = [];
-  arrivalBooks: any = [];
+  trendingBooks: any[] = [];
+  choiceBooks: any[] = [];
+  arrivalBooks: any[] = [];
+  filteredBooks: any[] = [];
 
   private booksService = inject(BooklistService);
 
-  constructor() {
+  ngOnInit(): void {
     const books = this.booksService.books;
 
-    //  Trending books → Only 5-star books (top 10 max)
+    // Static homepage data
     this.trendingBooks = books
       .filter((book: any) => this.getNumericRating(book.rating) === 5)
       .slice(0, 10);
 
-    //  New Arrivals
     this.arrivalBooks = books.filter(
       (book: any) => book.category === 'New Arrival'
     );
 
-    //  Find Your Choice → random 10 books (for variety)
     this.choiceBooks = [...books]
       .sort(() => Math.random() - 0.5)
-      .slice(0, 10);
+      .slice(0, 12);
+
+    // Listen for filtered search results
+    this.booksService.filteredBooks$.subscribe((results) => {
+      this.filteredBooks = results;
+    });
   }
 
-  //  Convert ratings
   getNumericRating(rating: any): number {
     if (typeof rating === 'number') return rating;
-    if (typeof rating === 'string') {
-      return (rating.match(/★/g) || []).length;
-    }
+    if (typeof rating === 'string') return (rating.match(/★/g) || []).length;
     return 0;
   }
 
-  //  Slider scroll functions
   slideLeft() {
     if (this.slider)
       this.slider.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });

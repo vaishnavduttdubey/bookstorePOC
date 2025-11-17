@@ -76,7 +76,7 @@
 
 .signup-form input:focus,
 .signup-form textarea:focus {
-  border-color: #167faf;
+  border-color: #fa1c15;
   box-shadow: 0 0 4px rgba(22, 127, 175, 0.4);
 }
 

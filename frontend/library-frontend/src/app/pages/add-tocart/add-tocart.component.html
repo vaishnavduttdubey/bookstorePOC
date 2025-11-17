@@ -1,4 +1,26 @@
-<div class="container">
-  <h2 class="title">Add To Your cart</h2>
-  <div class="listaddTocart"></div>
+<div class="cart-container">
+  <h2>Your Cart</h2>
+
+  <div *ngIf="cartItems.length === 0" class="empty-cart">
+    <p>Your cart is empty!</p>
+    <a routerLink="/home" class="btn">Go Back</a>
+  </div>
+
+  <div *ngIf="cartItems.length > 0" class="cart-items">
+    <div class="cart-item" *ngFor="let book of cartItems">
+      <img [src]="book.image" [alt]="book.title" />
+      <div class="item-info">
+        <h3>{{ book.title }}</h3>
+        <p>Author: {{ book.author }}</p>
+        <p>Price: ₹{{ book.price }}</p>
+      </div>
+      <button (click)="removeItem(book)" class="remove-btn">Remove</button>
+    </div>
+
+    <div class="cart-summary">
+      <p><b>Total:</b> ₹{{ totalPrice }}</p>
+      <button (click)="clearCart()" class="clear-btn">Clear Cart</button>
+      <button class="checkout-btn">Paymnet</button>
+    </div>
+  </div>
 </div>

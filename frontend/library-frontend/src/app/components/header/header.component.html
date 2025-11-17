@@ -1,75 +1,100 @@
 <header class="header">
   <!-- TOP BAR -->
   <div class="top-bar">
+    <!-- LOGO -->
     <a routerLink="/home">
       <img src="assets/logo.png" alt="VSNV Logo" class="logo" />
     </a>
 
-    <div class="search-container">
-      <input type="text" class="search-bar" placeholder="Search for books..." />
-      <button class="search-btn">
+    <!-- SEARCH BAR -->
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Search by title ,author or categories"
+        [(ngModel)]="searchText"
+        (input)="onInputChange($event)"
+        (keydown)="onKeydownInInput($event)"
+        autocomplete="on"
+      />
+      <button class="search-btn" type="button">
         <i class="fa fa-search"></i>
       </button>
+
+      <!-- Suggestions dropdown -->
+      <div *ngIf="showSuggestions" class="suggestions-box">
+        <ul>
+          <li
+            *ngFor="let book of suggestions; let i = index"
+            (click)="selectSuggestion(book)"
+          >
+            <span class="book-title">{{ book.title }}</span>
+            <span class="book-author">by {{ book.author }}</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <!-- this is the header icon with counter -->
+    <!-- HEADER ICONS -->
     <div class="header-icons">
-      <a routerLink="login">
+      <a routerLink="/login">
         <i class="fa-regular fa-circle-user"></i> My Account
       </a>
 
-      <a href="#" class="icon-wrapper">
-        <i class="fa fa-heart" style="color: #e63946"></i>
-        <span class="counter">0</span>
+      <a routerLink="/addTocart" class="icon-wrapper cart-container">
+        <i class="fa fa-shopping-cart" *ngIf="cartCount > 0"></i>
+        <span class="cart-count">{{ cartCount }}</span>
       </a>
 
-      <a routerLink="addTocart" class="icon-wrapper">
-        <i class="fa fa-shopping-cart" style="color: #e63946"></i>
-        <span class="counter">0</span>
+      <a routerLink="/home" class="icon-wrapper">
+        <i class="fa fa-home"></i>
       </a>
     </div>
   </div>
 
   <!-- NAVIGATION BAR -->
   <nav class="nav-menu">
-    <li class="nav-item dropdown">
-      <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        id="booksDropdown"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Books
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="booksDropdown">
-        <li>
-          <a class="dropdown-item" routerLink="/category/Sports">Sports</a>
-        </li>
-        <li>
-          <a class="dropdown-item" routerLink="/category/Comedy">Comedy</a>
-        </li>
-        <li>
-          <a class="dropdown-item" routerLink="/category/Marvel">Marvel</a>
-        </li>
-        <li>
-          <a class="dropdown-item" routerLink="/category/Horror">Horror</a>
-        </li>
-        <li>
-          <a class="dropdown-item" routerLink="/category/Children">
-            Children's Books
-          </a>
-        </li>
-      </ul>
-    </li>
+    <ul class="nav-list">
+      <!-- DROPDOWN MENU -->
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="booksDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Books
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="booksDropdown">
+          <li>
+            <a class="dropdown-item" routerLink="/category/Sports">Sports</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/category/Comedy">Comedy</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/category/Marvel">Marvel</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/category/Horror">Horror</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/category/Children"
+              >Children's Books</a
+            >
+          </li>
+        </ul>
+      </li>
 
-    <a routerLink="arrival">New Arrivals</a> |
-    <a routerLink="box-set">Box Sets</a> |
-    <a routerLink="bestseller">Bestsellers</a> |
-    <a routerLink="fiction-books">Fiction Books</a> |
-    <a routerLink="awardwinner">Award Winners</a> |
-    <a routerLink="todaysdeal">Today's Deal</a> |
-    <a routerLink="requestbook">Request a Book</a>
+      <!-- MAIN NAV LINKS -->
+      <li><a routerLink="/arrival">New Arrivals</a></li>
+      <li><a routerLink="/box-set">Box Sets</a></li>
+      <li><a routerLink="/bestseller">Bestsellers</a></li>
+      <li><a routerLink="/fiction-books">Fiction Books</a></li>
+      <li><a routerLink="/awardwinner">Award Winners</a></li>
+      <li><a routerLink="/todaysdeal">Today's Deal</a></li>
+      <li><a routerLink="/requestbook">Request a Book</a></li>
+    </ul>
   </nav>
 </header>
