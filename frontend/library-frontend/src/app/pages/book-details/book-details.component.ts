@@ -15,20 +15,18 @@ export class BookDetailsComponent implements OnInit {
 
   private booksService = inject(BooklistService);
   private cartService = inject(CartService);
-  private routes = inject(ActivatedRoute);
+  private route = inject(ActivatedRoute);
 
-  books: any[] = [];
-  book: any;
-
-  constructor() {
-    this.books = this.booksService.books;
-  }
+  book: any = null;
 
   ngOnInit(): void {
-    const idFromUrl = this.routes.snapshot.paramMap.get('id');
-    const bookId = Number(idFromUrl);
+    this.booksService.loadBooks();
 
-    this.book = this.books.find(b => b.id === bookId);
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.booksService.filteredBooks$.subscribe(books => {
+      this.book = books.find(b => b.id === id);
+    });
   }
 
   addToCart(book: any) {

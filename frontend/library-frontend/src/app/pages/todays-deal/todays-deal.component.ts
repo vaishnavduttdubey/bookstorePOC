@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
 
 @Component({
@@ -10,12 +10,16 @@ import { BooklistService } from '../../booklist.service';
   templateUrl: './todays-deal.component.html',
   styleUrls: ['./todays-deal.component.css']
 })
-export class TodaysDealComponent {
- books: any=[];
- private booksService = inject(BooklistService);
+export class TodaysDealComponent implements OnInit {
 
- constructor(){
-  this.books= this.booksService.books.filter((book: any) => book.category === "Today's Deal");
- }
+  books: any[] = [];
+  private booksService = inject(BooklistService);
 
+  ngOnInit(): void {
+    this.booksService.loadBooks();
+
+    this.booksService.filteredBooks$.subscribe(allBooks => {
+      this.books = allBooks.filter(book => book.category === "Today's Deal");
+    });
+  }
 }

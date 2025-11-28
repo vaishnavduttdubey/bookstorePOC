@@ -1,18 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
 
 @Component({
   selector: 'app-award-winners',
- imports: [CommonModule, RouterLink],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './award-winners.component.html',
-  styleUrl: './award-winners.component.css'
+  styleUrls: ['./award-winners.component.css']
 })
-export class AwardWinnersComponent {
-  books: any=[];
- private booksService= inject(BooklistService);
- constructor(){
-  this.books=this.booksService.books.filter((book: any) => book.category === 'Award winner');
- }
+export class AwardWinnersComponent implements OnInit {
+
+  books: any[] = [];
+  private booksService = inject(BooklistService);
+
+  ngOnInit(): void {
+    this.booksService.loadBooks();
+
+    this.booksService.filteredBooks$.subscribe(allBooks => {
+      this.books = allBooks.filter(book => book.category === 'Award winner');
+    });
+  }
 }

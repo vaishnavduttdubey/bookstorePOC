@@ -1,110 +1,35 @@
-/*
-    Footer Base Styling
- */
+/* Footer Base */
 .footer {
   background: #110303;
   color: #f5f5f5;
-  padding:  10px 10px;
+  padding: 20px;
   font-family: 'Poppins', sans-serif;
-  border-top: 4px solid #e2150e;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/*
-   Footer Sections
- */
-.footer-section {
-  flex: 1 1 280px;
-  min-width: 250px;
-}
-
-.footer-section h3,
-.footer-section h4 {
-  color: #27ae60;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.footer-section p {
-  font-size: 14px;
-  color: #0acfb5;
-  line-height: 1.6;
-}
-
-/*
-   Quick Links
- */
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-section ul li {
-  margin: 8px 0;
-}
-
-.footer-section ul li a {
-  color: #118f7a;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-  color: #27ae60;
-}
-
-/*
-   Social Icons
- */
-.social-icons {
-  margin-top: 15px;
-}
-
-.social-icons a {
-  display: inline-block;
-  color: #f5f5f5;
-  font-size: 18px;
-  margin-right: 12px;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-icons a:hover {
-  color: #27ae60;
-  transform: scale(1.15);
-}
-
-/*
-   Footer Bottom
- */
-.footer-bottom {
-  border-top: 1px solid #2c2f2c;
   text-align: center;
-  margin-top: 30px;
-  padding-top: 15px;
+}
+
+/* Footer Links */
+.footer a {
+  color: #27ae60;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #0acfb5;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 15px;
   font-size: 13px;
   color: #aaa;
 }
 
-/*
-   Responsive
- */
+/* Responsive */
 @media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-
-  .social-icons a {
-    margin: 0 8px;
+  .footer a {
+    display: block;
+    margin: 8px 0;
   }
 }

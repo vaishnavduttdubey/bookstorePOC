@@ -17,60 +17,41 @@
   border-radius: 10px;
 }
 
-/* ------- RESPONSIVE ------- */
-@media (max-width: 768px) {
-  .book-card {
-    flex: 0 0 calc(50% - 18px);
-  }
-  .banner-text {
-    font-size: 1.5rem;
-  }
-  .banner-images img {
-    width: 45px;
-    height: 60px;
-  }
-  .mangaworldPoster {
-    padding: 10px;
-  }
-  .mangaworld-image {
-    max-height: 60vh;
-  }
-}
-
-
-
-
-
-.todays-deal{
+/* ------- TODAYS DEAL ------- */
+.todays-deal {
   padding: 40px 20px;
   background-color: rgb(250, 248, 248);
 }
 
-.section-title{
+.section-title {
   text-align: center;
- color: #8b1d09;
-font-family: 'Times New Roman', Times, serif;
- margin: 20px;
- font-weight: bold
+  color: #8b1d09;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 20px;
+  font-weight: bold;
 }
-.book-container{
-display: grid;
+
+.book-container {
+  display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 25px;
   justify-items: center;
   background-color: rgb(250, 248, 248);
 }
 
-.book-card{
-background-color: rgb(228, 225, 231);
-text-align: center;
-padding: 15px;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.book-card {
+  background-color: rgb(228, 225, 231);
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
-.book-card:hover{
+
+.book-card:hover {
   transform: translateY(-7px);
-   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
+
 .book-img {
   width: 100%;
   height: 260px;
@@ -112,6 +93,12 @@ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 @media (max-width: 768px) {
   .book-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .mangaworldPoster {
+    padding: 10px;
+  }
+  .mangaworld-image {
+    max-height: 60vh;
   }
 }
 

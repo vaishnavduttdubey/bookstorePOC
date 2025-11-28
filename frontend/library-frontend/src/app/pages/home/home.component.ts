@@ -11,50 +11,40 @@ import { BooklistService } from '../../booklist.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('slider', { static: false }) slider!: ElementRef;
+
+  @ViewChild('slider') slider!: ElementRef;
 
   trendingBooks: any[] = [];
   choiceBooks: any[] = [];
   arrivalBooks: any[] = [];
-  filteredBooks: any[] = [];
 
   private booksService = inject(BooklistService);
 
   ngOnInit(): void {
-    const books = this.booksService.books;
+    this.booksService.loadBooks();
 
-    // Static homepage data
-    this.trendingBooks = books
-      .filter((book: any) => this.getNumericRating(book.rating) === 5)
-      .slice(0, 10);
+    this.booksService.filteredBooks$.subscribe(books => {
+      if (books.length === 0) return;
 
-    this.arrivalBooks = books.filter(
-      (book: any) => book.category === 'New Arrival'
-    );
+      this.trendingBooks = books
+        .filter(b => this.getNumericRating(b.rating) === 5)
+        .slice(0, 10);
 
-    this.choiceBooks = [...books]
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 12);
+      this.arrivalBooks = books.filter(b => b.category === 'New Arrival');
 
-    // Listen for filtered search results
-    this.booksService.filteredBooks$.subscribe((results) => {
-      this.filteredBooks = results;
+      this.choiceBooks = [...books].sort(() => Math.random() - 0.5).slice(0, 12);
     });
   }
 
   getNumericRating(rating: any): number {
-    if (typeof rating === 'number') return rating;
-    if (typeof rating === 'string') return (rating.match(/★/g) || []).length;
-    return 0;
+    return (rating.match(/★/g) || []).length;
   }
 
   slideLeft() {
-    if (this.slider)
-      this.slider.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
+    this.slider.nativeElement.scrollBy({ left: -300, behavior: 'smooth' });
   }
 
   slideRight() {
-    if (this.slider)
-      this.slider.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
+    this.slider.nativeElement.scrollBy({ left: 300, behavior: 'smooth' });
   }
 }

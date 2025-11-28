@@ -1,20 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
 
 @Component({
   selector: 'app-box-set',
+  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './box-set.component.html',
   styleUrls: ['./box-set.component.css']
 })
-export class BoxSetComponent {
+export class BoxSetComponent implements OnInit {
 
-books: any=[];
-private booksService = inject(BooklistService);
-constructor(){
-  this.books= this.booksService.books.filter((book: any) => book.category === 'Box Set');
-  console.log(this.books);
-}
+  books: any[] = [];
+  private booksService = inject(BooklistService);
+
+  ngOnInit(): void {
+    this.booksService.loadBooks();
+
+    this.booksService.filteredBooks$.subscribe(allBooks => {
+      this.books = allBooks.filter(book => book.category === 'Box Set');
+    });
+  }
 }

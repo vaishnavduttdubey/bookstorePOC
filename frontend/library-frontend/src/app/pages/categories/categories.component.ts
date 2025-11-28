@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
 
@@ -10,19 +10,26 @@ import { BooklistService } from '../../booklist.service';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent {
-  books: any = [];
+export class CategoriesComponent implements OnInit {
+
+  books: any[] = [];
   category: string = '';
+
   private booksService = inject(BooklistService);
   private route = inject(ActivatedRoute);
 
-  constructor() {
-    // get category name from route (like 'Comedy', 'Sports' etc.)
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.category = params.get('category') || '';
-      this.books = this.booksService.books.filter(
-        (book: any) => book.category === this.category
-      );
+      this.loadCategoryBooks();
+    });
+
+    this.booksService.loadBooks();
+  }
+
+  loadCategoryBooks() {
+    this.booksService.filteredBooks$.subscribe(allBooks => {
+      this.books = allBooks.filter(book => book.category === this.category);
     });
   }
 }

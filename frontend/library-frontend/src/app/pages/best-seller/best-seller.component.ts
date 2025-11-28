@@ -1,18 +1,25 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
 
 @Component({
   selector: 'app-best-seller',
+  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './best-seller.component.html',
-  styleUrl: './best-seller.component.css'
+  styleUrls: ['./best-seller.component.css']
 })
-export class BestSellerComponent {
-books: any=[];
-private booksService=inject(BooklistService);
-constructor(){
-  this.books=this.booksService.books.filter((book:any)=>book.category==='Bestseller');
-}
+export class BestSellerComponent implements OnInit {
+
+  books: any[] = [];
+  private booksService = inject(BooklistService);
+
+  ngOnInit(): void {
+    this.booksService.loadBooks();
+
+    this.booksService.filteredBooks$.subscribe(allBooks => {
+      this.books = allBooks.filter(book => book.category === 'Bestseller');
+    });
+  }
 }

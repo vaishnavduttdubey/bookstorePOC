@@ -11,7 +11,7 @@ import { NgIf } from '@angular/common';
 })
 export class RequestBookComponent {
   bookForm = new FormGroup({
-    isbn: new FormControl('', [Validators.required]),
+
     title: new FormControl('', [Validators.required]),
     author: new FormControl(''),
     quantity: new FormControl(1, [Validators.min(1)]),
@@ -26,6 +26,8 @@ export class RequestBookComponent {
       this.bookForm.reset();
     } else {
       this.bookForm.markAllAsTouched();
+
+
     }
   }
 }
