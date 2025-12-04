@@ -40,6 +40,6 @@ export class LoginComponent {
       return;
     }
 
-    console.log('✅ Form Submitted:', this.loginForm.value);
+    console.log(' Form Submitted:', this.loginForm.value);
   }
 }

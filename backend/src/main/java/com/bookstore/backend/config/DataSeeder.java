@@ -81,9 +81,9 @@ public class DataSeeder {
             repo.save(new Book("The Divine Comedy", "Dante Alighieri", "Comedy", "assets/Comedy/The Divine Comedy.jpg", "★★★★★", "Epic journey through Hell, Purgatory, and Heaven.", 599));
             repo.save(new Book("The Temporary Roomie", "Sarah Adams", "Comedy", "assets/Comedy/The Temporary Roomie.jpg", "★★★★", "Romantic comedy with twists and turns.", 399));
 
-            // ============================
+
             // Fiction
-            // ============================
+
             repo.save(new Book("All the Ever Afters", "Danielle Teller", "Fiction", "assets/Fiction Book/All the ever afters.jpg", "★★★★", "A fascinating novel blending reality and fantasy.", 450));
             repo.save(new Book("Brahmin Ki Beti", "Munshi Premchand", "Fiction", "assets/Fiction Book/Bramhin ki beti.jpg", "★★★★", "Classic Indian fiction exploring social themes.", 299));
             repo.save(new Book("Godan", "Munshi Premchand", "Fiction", "assets/Fiction Book/Godan.jpg", "★★★★★", "A timeless story of rural India and its struggles.", 399));
@@ -123,7 +123,7 @@ public class DataSeeder {
             repo.save(new Book("The Handbook for Leaders", "Max De Pree", "Today's Deal", "assets/Today's Deal/the handbook for leaders.jpg", "★★★★☆", "Leadership lessons for professionals.", 399));
             repo.save(new Book("The Maisky Diaries", "Gabriel Gorodetsky", "Today's Deal", "assets/Today's Deal/the maisky dairy.jpg", "★★★★", "Historical insights from Soviet ambassador diaries.", 599));
 
-            System.out.println("📚 All 65 Books Inserted Successfully!");
+            System.out.println("  65 Books Inserted Successfully!");
         };
     }
 }

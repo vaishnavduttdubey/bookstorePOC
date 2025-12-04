@@ -13,6 +13,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
 import { AddTocartComponent } from './pages/add-tocart/add-tocart.component';
+import { BuyComponent } from './buy/buy.component';
 
 
 
@@ -31,6 +32,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'book/:id', component: BookDetailsComponent },
-  { path:'addTocart',component:AddTocartComponent}
+  { path:'addTocart',component:AddTocartComponent},
+  { path:'buy', component:BuyComponent}
 
 ];

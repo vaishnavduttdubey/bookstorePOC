@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { BooklistService } from '../../booklist.service';
 import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css']
 })

@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private searchSub!: Subscription;
 
   ngOnInit(): void {
-    this.bookService.loadBooks();   // 🔥 IMPORTANT
+    this.bookService.loadBooks();
 
     this.cartService.cartCount$.subscribe(count => {
       this.cartCount = count;
@@ -59,6 +59,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.suggestions = [];
     this.router.navigate(['/book', book.id]);
   }
+
 
   onKeydownInInput(event: KeyboardEvent): void {
     const num = Number(event.key);
