@@ -10,9 +10,9 @@
     <p><b>Rating:</b> {{ book.rating }}</p>
     <p><b>Price:</b> ₹{{ book.price }}</p>
     <p class="description"><b>Description:</b> {{ book.description }}</p>
-    <button (click)="addToCart(book)">Add to Cart</button>
+    <button (click)="addToCart(book)" class="space">Add to Cart</button>
 
-    <button routerLink="/buy">Buy Now</button>
+    <button routerLink="/buy" class="space">Buy Now</button>
   </div>
 </div>
 

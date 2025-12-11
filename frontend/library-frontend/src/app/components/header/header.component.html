@@ -1,33 +1,45 @@
 <header class="header">
-  <!-- TOP BAR -->
   <div class="top-bar">
     <!-- LOGO -->
     <a routerLink="/home">
       <img src="assets/logo.png" alt="VSNV Logo" class="logo" />
     </a>
 
-    <!-- SEARCH BAR -->
+    <!-- SEARCH BOX -->
     <div class="search-box">
+      <!-- Input -->
       <input
         type="text"
-        placeholder="Search by title ,author or categories"
+        placeholder="Search by title, author or categories"
         [(ngModel)]="searchText"
         (input)="onInputChange($event)"
-        (keydown)="onKeydownInInput($event)"
-        autocomplete="on"
+        (blur)="hideSuggestions()"
+        autocomplete="off"
+        class="search-input"
       />
-      <button class="search-btn" type="button">
+
+      <button class="search-btn" type="button" aria-label="Search">
         <i class="fa fa-search"></i>
       </button>
 
-      <!-- Suggestions dropdown -->
-      <div *ngIf="showSuggestions" class="suggestions-box">
+      <!-- Suggestions Dropdown (only when showSuggestions true) -->
+      <div *ngIf="showSuggestions" class="suggestions-box" role="listbox">
+        <!-- If no suggestions we show "No results" (defensive) -->
+        <div *ngIf="suggestions.length === 0" class="no-results">
+          No results found
+        </div>
+
+        <!-- Suggestion items -->
         <ul>
           <li
             *ngFor="let book of suggestions; let i = index"
             (click)="selectSuggestion(book)"
+            [class.active]="i === selectedIndex"
+            role="option"
+            [attr.aria-selected]="i === selectedIndex"
           >
-            <span class="book-title">{{ book.title }}</span>
+            <!-- Highlight matched text in title -->
+            <span class="book-title" [innerHTML]="highlight(book.title)"></span>
             <span class="book-author">by {{ book.author }}</span>
           </li>
         </ul>
@@ -54,7 +66,6 @@
   <!-- NAVIGATION BAR -->
   <nav class="nav-menu">
     <ul class="nav-list">
-      <!-- DROPDOWN MENU -->
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
@@ -66,6 +77,7 @@
         >
           Books
         </a>
+
         <ul class="dropdown-menu" aria-labelledby="booksDropdown">
           <li>
             <a class="dropdown-item" routerLink="/category/Sports">Sports</a>
@@ -87,7 +99,6 @@
         </ul>
       </li>
 
-      <!-- MAIN NAV LINKS -->
       <li><a routerLink="/arrival">New Arrivals</a></li>
       <li><a routerLink="/box-set">Box Sets</a></li>
       <li><a routerLink="/bestseller">Bestsellers</a></li>
