@@ -24,7 +24,7 @@ export class BookDetailsComponent implements OnInit {
 
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.booksService.filteredBooks$.subscribe(books => {
+    this.booksService.allBooks$.subscribe(books => {
       this.book = books.find(b => b.id === id);
     });
   }

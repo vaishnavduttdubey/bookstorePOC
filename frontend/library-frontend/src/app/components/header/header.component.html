@@ -7,29 +7,32 @@
 
     <!-- SEARCH BOX -->
     <div class="search-box">
-      <!-- Input -->
       <input
         type="text"
         placeholder="Search by title, author or categories"
         [(ngModel)]="searchText"
         (input)="onInputChange($event)"
+        (keyup.enter)="onEnter()"
         (blur)="hideSuggestions()"
         autocomplete="off"
         class="search-input"
       />
 
-      <button class="search-btn" type="button" aria-label="Search">
+      <button
+        class="search-btn"
+        type="button"
+        aria-label="Search"
+        (click)="onEnter()"
+      >
         <i class="fa fa-search"></i>
       </button>
 
-      <!-- Suggestions Dropdown (only when showSuggestions true) -->
+      <!-- Suggestions Dropdown -->
       <div *ngIf="showSuggestions" class="suggestions-box" role="listbox">
-        <!-- If no suggestions we show "No results" (defensive) -->
         <div *ngIf="suggestions.length === 0" class="no-results">
           No results found
         </div>
 
-        <!-- Suggestion items -->
         <ul>
           <li
             *ngFor="let book of suggestions; let i = index"
@@ -38,7 +41,6 @@
             role="option"
             [attr.aria-selected]="i === selectedIndex"
           >
-            <!-- Highlight matched text in title -->
             <span class="book-title" [innerHTML]="highlight(book.title)"></span>
             <span class="book-author">by {{ book.author }}</span>
           </li>

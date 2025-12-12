@@ -11,21 +11,30 @@ export class BooklistService {
 
   books: any[] = [];
 
+  //  Only for Home page (NOT affected by search)
+  private allBooksSubject = new BehaviorSubject<any[]>([]);
+  allBooks$ = this.allBooksSubject.asObservable();
+
+  //  For autocomplete suggestions in Header
   private filteredBooksSubject = new BehaviorSubject<any[]>([]);
   filteredBooks$ = this.filteredBooksSubject.asObservable();
 
+
   constructor(private http: HttpClient) {}
 
-  // Load all books from backend
+  // Load all books
   loadBooks() {
     this.http.get<any[]>(this.baseUrl).subscribe(data => {
-      this.books = data;              // store in service
-      this.filteredBooksSubject.next(this.books);
+      this.books = data;
+
+      //  Home page only listens to this
+      this.allBooksSubject.next(data);
+
       console.log("Books loaded:", this.books);
     });
   }
 
-  // Search method for header search box
+  // AUTOCOMPLETE search (Header only)
   searchBooks(query: string): void {
     if (!query.trim()) {
       this.filteredBooksSubject.next([]);
@@ -34,9 +43,21 @@ export class BooklistService {
 
     const regex = new RegExp(query, 'i');
     const filtered = this.books.filter(
-      (book: any) => regex.test(book.title) || regex.test(book.author)
+      (book: any) =>
+        regex.test(book.title) ||
+        regex.test(book.author)
     );
 
     this.filteredBooksSubject.next(filtered);
+  }
+
+  // FULL SEARCH (Search Page only)
+  fullSearch(query: string): any[] {
+    const regex = new RegExp(query, 'i');
+    return this.books.filter(
+      (b: any) =>
+        regex.test(b.title) ||
+        regex.test(b.author)
+    );
   }
 }

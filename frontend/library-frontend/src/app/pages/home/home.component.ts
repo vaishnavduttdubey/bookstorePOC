@@ -21,10 +21,12 @@ export class HomeComponent implements OnInit {
   private booksService = inject(BooklistService);
 
   ngOnInit(): void {
+    // Load books initially
     this.booksService.loadBooks();
 
-    this.booksService.filteredBooks$.subscribe(books => {
-      if (books.length === 0) return;
+    //  Home page should listen ONLY to allBooks$ (NOT search results)
+    this.booksService.allBooks$.subscribe((books: any[]) => {
+      if (!books.length) return;
 
       this.trendingBooks = books
         .filter(b => this.getNumericRating(b.rating) === 5)
@@ -32,7 +34,9 @@ export class HomeComponent implements OnInit {
 
       this.arrivalBooks = books.filter(b => b.category === 'New Arrival');
 
-      this.choiceBooks = [...books].sort(() => Math.random() - 0.5).slice(0, 12);
+      this.choiceBooks = [...books]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 12);
     });
   }
 

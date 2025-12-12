@@ -18,7 +18,7 @@ export class BoxSetComponent implements OnInit {
   ngOnInit(): void {
     this.booksService.loadBooks();
 
-    this.booksService.filteredBooks$.subscribe(allBooks => {
+    this.booksService.allBooks$.subscribe(allBooks => {
       this.books = allBooks.filter(book => book.category === 'Box Set');
     });
   }

@@ -28,7 +28,7 @@ export class CategoriesComponent implements OnInit {
   }
 
   loadCategoryBooks() {
-    this.booksService.filteredBooks$.subscribe(allBooks => {
+    this.booksService.allBooks$.subscribe(allBooks => {
       this.books = allBooks.filter(book => book.category === this.category);
     });
   }

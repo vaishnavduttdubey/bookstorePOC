@@ -18,8 +18,8 @@ export class NewArrivalsComponent implements OnInit {
   ngOnInit(): void {
     this.booksService.loadBooks();
 
-    this.booksService.filteredBooks$.subscribe(allBooks => {
-      this.books = allBooks.filter(book => book.category === 'New Arrival');
+    this.booksService.allBooks$.subscribe((allBooks: any[]) => {
+      this.books = allBooks.filter((book: { category: string; }) => book.category === 'New Arrival');
     });
   }
 }

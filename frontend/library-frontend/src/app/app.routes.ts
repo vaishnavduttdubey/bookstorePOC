@@ -14,6 +14,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { BookDetailsComponent } from './pages/book-details/book-details.component';
 import { AddTocartComponent } from './pages/add-tocart/add-tocart.component';
 import { BuyComponent } from './buy/buy.component';
+import { SearchResultComponent } from './pages/search-result/search-result.component';
 
 
 
@@ -33,6 +34,7 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'book/:id', component: BookDetailsComponent },
   { path:'addTocart',component:AddTocartComponent},
-  { path:'buy', component:BuyComponent}
+  { path:'buy', component:BuyComponent},
+  { path: 'search',component:SearchResultComponent }
 
 ];
