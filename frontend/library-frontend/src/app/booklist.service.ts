@@ -6,6 +6,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class BooklistService {
+getBookImage(arg0: any) {
+throw new Error('Method not implemented.');
+}
 
   private baseUrl = 'http://localhost:8080/books';
 
@@ -60,4 +63,12 @@ export class BooklistService {
         regex.test(b.author)
     );
   }
+
+  requestBook(data: any) {
+  return this.http.post(
+    'http://localhost:8080/book-requests',
+    data
+  );
+}
+
 }

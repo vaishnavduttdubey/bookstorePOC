@@ -123,7 +123,7 @@ public class DataSeeder {
             repo.save(new Book("The Handbook for Leaders", "Max De Pree", "Today's Deal", "assets/Today's Deal/the handbook for leaders.jpg", "★★★★☆", "Leadership lessons for professionals.", 399));
             repo.save(new Book("The Maisky Diaries", "Gabriel Gorodetsky", "Today's Deal", "assets/Today's Deal/the maisky dairy.jpg", "★★★★", "Historical insights from Soviet ambassador diaries.", 599));
 
-            System.out.println("  65 Books Inserted Successfully!");
+            System.out.println(" Books Inserted Successfully!");
         };
     }
 }

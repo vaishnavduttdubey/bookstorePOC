@@ -1,0 +1,24 @@
+<div class="search-page">
+  <h2 *ngIf="searchResults.length">
+    Search Results ({{ searchResults.length }})
+  </h2>
+
+  <h3 *ngIf="!searchResults.length">No books found</h3>
+
+  <div class="result-list">
+    <!-- One row per book -->
+    <div
+      class="result-row"
+      *ngFor="let book of searchResults"
+      (click)="openBook(book.id)"
+    >
+      <div class="book-info">
+        <h4 class="title">{{ book.title }}</h4>
+        <p class="author">by {{ book.author }}</p>
+        <p class="category">Category: {{ book.category }}</p>
+        <p class="rating">Rating: {{ book.rating }}</p>
+        <p class="price" *ngIf="book.price">₹ {{ book.price }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -40,14 +40,16 @@
 
 .book-info h2 {
   font-size: 2rem;
-  color: #222;
+  color: #000000;
   margin-bottom: 15px;
 }
+
+
 
 .book-info p {
   font-size: 1.1rem;
   margin: 8px 0;
-  color: #555;
+  color: #414141;
 }
 
 .book-info p b {
@@ -60,16 +62,22 @@
   line-height: 1.6;
   color: #444;
 }
+.rating {
+  color: #8c30f4; /* yellow-gold */
+  font-weight: 600;
+}
+
 
 /* Button */
 button {
   margin-top: 25px;
-  background: rgb(58, 38, 175);
+  background: #2539f3;
   color: white;
   border: none;
-  padding: 17px 25px;
+  padding: 17px 30px    ;
+  justify-content: space-between;
 
-  border-radius: 20px;
+  border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -87,14 +95,12 @@ button:hover {
 }
 
 .not-found h3 {
-  color: #555;
+  color: #1d1b1b;
   margin-bottom: 15px;
 }
 
 .space{
-
-  justify-content: space-evenly;
- display: flex;
+margin-right: 29px;
 
 }
 

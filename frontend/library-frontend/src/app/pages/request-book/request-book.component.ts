@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, ReactiveFormsModule, MaxLengthValidator } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule
+} from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { BooklistService } from '../../booklist.service';
 
 @Component({
   selector: 'app-request-book',
@@ -10,24 +16,41 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./request-book.component.css']
 })
 export class RequestBookComponent {
-  bookForm = new FormGroup({
 
+  constructor(private bookService: BooklistService) {}
+
+  bookForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     author: new FormControl(''),
     quantity: new FormControl(1, [Validators.min(1)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl(''  )
+    phone: new FormControl('')
   });
 
   onSubmit() {
-    if (this.bookForm.valid) {
-      alert('Book request submitted successfully!');
-      console.log(this.bookForm.value);
-      this.bookForm.reset();
-    } else {
+    if (this.bookForm.invalid) {
       this.bookForm.markAllAsTouched();
-
-
+      return;
     }
+
+    // Map form fields → backend fields
+    const payload = {
+      bookName: this.bookForm.value.title,
+      authorName: this.bookForm.value.author,
+      quantity: this.bookForm.value.quantity,
+      userEmail: this.bookForm.value.email,
+      phone: this.bookForm.value.phone,
+      message: 'Requested from UI'
+    };
+
+    this.bookService.requestBook(payload).subscribe({
+      next: () => {
+        alert('Book request submitted successfully!');
+        this.bookForm.reset({ quantity: 1 });
+      },
+      error: () => {
+        alert('Something went wrong. Please try again.');
+      }
+    });
   }
 }
